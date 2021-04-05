@@ -3,11 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  
   "scripts": {
     "sass": "sass --watch ./scss/main.scss:./css/style.css",
-    "prefix": "postcss ./css/style.css --use autoprefixer -d ./css/prefixed/"
-    
+    "start": "webpack-dev-server sass"
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +16,11 @@
     "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.3.8",
     "mongoose-unique-validator": "^2.0.2",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.7.1"
+  },
+  "devDependencies": {
+    "webpack": "^5.30.0"
   }
 }
