@@ -13,7 +13,7 @@
 
     <body>
         <header>
-            <a href="../index.html"><img src="../img/logo.png" alt="logo de orinoco"></a>
+            <a href="../index.html"><img src="../images/logo.png" alt="logo de orinoco"></a>
             <nav>
                 <a href="./panier.html"><i class="fas fa-shopping-cart"></i></a>
             </nav>
@@ -49,31 +49,34 @@
             <form action="/ma-page-de-traitement" method="post">
                 <div>
                     <label for="nom">Nom</label>
-                    <input name="nom" id="nom" placeholder="Nom" autocomplete="family-name">
+                    <input name="nom" id="nom" placeholder="Nom" autocomplete="family-name" required>
                 </div>
                 <div>
                     <label for="prenom">Prénom</label>
-                    <input id="prenom" name="prenom" placeholder="Prénom" autocomplete="given-name">
+                    <input id="prenom" name="prenom" placeholder="Prénom" autocomplete="given-name" required>
                 </div>
                 <div>
                     <label for="adresse">Adresse</label>
-                    <input id="adresse" name="user_adresse" placeholder="Adresse" autocomplete="address-line1">
+                    <input id="adresse" name="user_adresse" placeholder="Adresse" autocomplete="address-line1" required>
                 </div>
                 <div>
                     <label for="cp">Code postal</label>
-                    <input type="text" id="cp" name="user_cp" placeholder="Code postal" autocomplete="postal-code">
+                    <input type="text" id="cp" name="user_cp" placeholder="Code postal" autocomplete="postal-code" required pattern="[0-9]">
                 </div>
                 <div>
                     <label for="city">Ville</label>
-                    <input type="text" id="city" name="user_city" placeholder="Ville" autocomplete="address-level2">
+                    <input type="text" id="city" name="user_city" placeholder="Ville" autocomplete="address-level2" required>
                 </div>
                 <div>
                     <label for="email">Email</label>
-                    <input type="email" name="email" id="email" placeholder="Email" autocomplete="email">
+                    <input type="email" name="email" id="email" placeholder="Email" autocomplete="email" required>
                 </div>
                 <div>
                     <label for="comment">Commentaires</label>
                     <input type="text" id="comment" name="user_comment">
+                </div>
+                <div>
+                    <input type="submit" id="submit" name="user_submit">
                 </div>
             </form>
         </div>

@@ -85,6 +85,7 @@ main .produit_acceuil {
   display: flex;
   justify-content: space-around;
   margin-bottom: 100px;
+  padding: 0 50px;
 }
 main .produit_acceuil a {
   display: flex;
@@ -221,6 +222,7 @@ main .produit_acceuil img:hover {
 .page_panier form {
   border: solid 2px black;
   width: 375px;
+  height: 500px;
   margin: 75px auto;
 }
 .page_panier form div {
@@ -236,8 +238,28 @@ main .produit_acceuil img:hover {
   right: 15px;
   bottom: -5px;
 }
+.page_panier form #submit {
+  position: relative;
+  left: 72.5px;
+}
 
-@media (max-width: 425px) {
+@media (max-width: 1700px) {
+  .produit_acceuil {
+    flex-wrap: wrap;
+    height: auto;
+  }
+}
+@media (max-width: 1250px) {
+  .article {
+    flex-direction: column;
+    text-align: center;
+  }
+  .article h2, .article img {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media (max-width: 730px) {
   body {
     width: 100%;
   }
@@ -285,7 +307,7 @@ main .produit_acceuil img:hover {
     margin-top: 20px;
   }
   .article .describe .price {
-    margin-bottom: 0;
+    margin-bottom: 100px;
   }
   .article img {
     width: 300px;
@@ -301,6 +323,7 @@ main .produit_acceuil img:hover {
   }
   .page_panier form {
     width: 90%;
+    height: 850px;
   }
   .page_panier form div {
     position: initial;
@@ -318,6 +341,10 @@ main .produit_acceuil img:hover {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 10px;
+  }
+  .page_panier form #submit {
+    left: 0;
+    top: 25px;
   }
 }
 
