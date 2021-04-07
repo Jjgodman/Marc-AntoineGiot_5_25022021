@@ -1,0 +1,29 @@
+
+<table>
+    <tbody>
+        <tr>
+            <td class="ligne_1">Produit</td>
+            <td class="ligne_1">Nom</td>
+            <td class="ligne_1">Couleur</td>
+            <td class="ligne_1">Quantité</td>
+            <td class="ligne_1">Prix</td>
+            <td class="ligne_1">Total</td>
+        </tr>
+        <tr>
+            <td class="ligne_2"><img src="#" alt=""></td>
+            <td class="ligne_2">lorem</td>
+            <td class="ligne_2">lorem</td>
+            <td class="ligne_2"><input type="text"></td>
+            <td class="ligne_2">lorem</td>
+            <td class="ligne_2">lorem</td>
+        </tr>
+        <tr>
+            <td class="ligne_3" colspan="5">Total</td>
+            <td class="ligne_3">lorem</td>
+        </tr>
+    </tbody>
+</table>
+
+<tr>
+            <td class="ligne_2"><img src="#" alt=""></td><td class="ligne_2">lorem</td><td class="ligne_2">lorem</td><td class="ligne_2"><input type="text"></td><td class="ligne_2">lorem</td><td class="ligne_2">lorem</td>
+        </tr>

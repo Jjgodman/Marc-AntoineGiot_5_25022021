@@ -154,7 +154,6 @@ main .produit_acceuil img:hover {
 }
 .article input:focus {
   outline: 0;
-  background-color: #c99a9aa8;
 }
 .article img {
   width: 700px;
@@ -212,6 +211,10 @@ main .produit_acceuil img:hover {
   border: solid 1px black;
   width: 85px;
   text-align: center;
+}
+.page_panier td img {
+  width: 50px;
+  height: 50px;
 }
 .page_panier .ligne_2 {
   height: 75px;

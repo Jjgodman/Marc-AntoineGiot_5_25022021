@@ -9,6 +9,7 @@
         <title>Orinoco</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" />
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+        <script src="../js/panier.js" defer></script>
     </head>
 
     <body>
@@ -19,32 +20,9 @@
             </nav>
         </header>
         <div class="page_panier">
-            <p>Panier vide</p>
-
-            <table>
-                <tbody>
-                    <tr>
-                        <td class="ligne_1">Produit</td>
-                        <td class="ligne_1">Nom</td>
-                        <td class="ligne_1">Couleur</td>
-                        <td class="ligne_1">Quantité</td>
-                        <td class="ligne_1">Prix</td>
-                        <td class="ligne_1">Total</td>
-                    </tr>
-                    <tr>
-                        <td class="ligne_2"><img src="#" alt=""></td>
-                        <td class="ligne_2">lorem</td>
-                        <td class="ligne_2">lorem</td>
-                        <td class="ligne_2"><input type="text"></td>
-                        <td class="ligne_2">lorem</td>
-                        <td class="ligne_2">lorem</td>
-                    </tr>
-                    <tr>
-                        <td class="ligne_3" colspan="5">Total</td>
-                        <td class="ligne_3">lorem</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div id="tabPanier">
+            </div>
+            
 
             <form action="/ma-page-de-traitement" method="post">
                 <div>

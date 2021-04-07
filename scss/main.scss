@@ -166,7 +166,6 @@ main{
         }
         &:focus{
             outline: 0;
-            background-color: #c99a9aa8;
         }
     }
     img{
@@ -223,7 +222,11 @@ main{
     td{
         border: solid 1px black;
         width: 85px;
-        text-align:center
+        text-align:center;
+        img {
+            width: 50px;
+            height: 50px;
+        }
     }
     .ligne_2{
         height: 75px;
