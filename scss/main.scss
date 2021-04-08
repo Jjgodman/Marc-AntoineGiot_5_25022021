@@ -167,6 +167,10 @@ main{
         &:focus{
             outline: 0;
         }
+        &:active{
+            transition: none;
+            background-color: #9c7b7b;
+        }
     }
     img{
         width: 700px;
@@ -257,6 +261,12 @@ main{
             left: 72.5px;
         }
     }
+    #supp{
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
+    }
 }
 @media (max-width: 1700px)
 {
@@ -333,11 +343,17 @@ main{
         }
     }
 
+    .reducImg{
+        width: 50px;
+        height: 50px;
+    }
+
     .page_panier{
         table{
             transform: scale(0.9);position: relative;
             right: 0;
         }
+        
         form{
             width: 90%;
             height: 850px;

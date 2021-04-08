@@ -155,6 +155,10 @@ main .produit_acceuil img:hover {
 .article input:focus {
   outline: 0;
 }
+.article input:active {
+  transition: none;
+  background-color: #9c7b7b;
+}
 .article img {
   width: 700px;
   margin-left: 150px;
@@ -245,6 +249,12 @@ main .produit_acceuil img:hover {
   position: relative;
   left: 72.5px;
 }
+.page_panier #supp {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+}
 
 @media (max-width: 1700px) {
   .produit_acceuil {
@@ -317,6 +327,11 @@ main .produit_acceuil img:hover {
     height: 300px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .reducImg {
+    width: 50px;
+    height: 50px;
   }
 
   .page_panier table {

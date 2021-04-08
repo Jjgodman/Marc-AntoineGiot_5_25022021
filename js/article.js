@@ -4,6 +4,8 @@ main()
 
 async function main() {
     const info = await getInfo()
+    
+    console.log(info[1].lenses)
     displayInfo(info)
 }
 //récuperation des données de l'api
@@ -58,7 +60,7 @@ function displayInfo(info) {
             image: info.find(x => x._id === urlid).imageUrl,
             choixLense: model,
             quantite: 1,
-            prixPanier: prixFinal
+            prixPanier: parseFloat(prixFinal.toString().replace(',' , '.'))
         }
         //--------------------------------------stockage des données dans le local storage--------------------------------------------          
 

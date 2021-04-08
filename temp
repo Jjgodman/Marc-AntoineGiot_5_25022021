@@ -1,6 +1,6 @@
 
 <table>
-    <tbody>
+    <tbody  id="ligneProduit">
         <tr>
             <td class="ligne_1">Produit</td>
             <td class="ligne_1">Nom</td>
@@ -27,3 +27,9 @@
 <tr>
             <td class="ligne_2"><img src="#" alt=""></td><td class="ligne_2">lorem</td><td class="ligne_2">lorem</td><td class="ligne_2"><input type="text"></td><td class="ligne_2">lorem</td><td class="ligne_2">lorem</td>
         </tr>
+
+
+
+
+
+        <a href="./html/produits/606e9b2e2a7802ef44d8ae52.html"><img src="./images/vcam_1.jpg" alt="camera"><span>Camera numérique</span></a>
