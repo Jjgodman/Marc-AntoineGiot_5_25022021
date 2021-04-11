@@ -1,14 +1,14 @@
 //recuperation du local storage
-let produitLocalStorage =JSON.parse( localStorage.getItem("produit"));
+let product_id =JSON.parse( localStorage.getItem("product_id"));
 
 //si il y a quelque chose dans le local storage alors on creer le panier
 const tab = document.getElementById("tabPanier")
-if (produitLocalStorage){
+if (product_id){
 
     let prixT = 0;
     tab.innerHTML = ('<table><tbody><tr><td class="ligne_1">Produit</td><td class="ligne_1">Nom</td><td class="ligne_1">Optique</td><td class="ligne_1">Prix</td></tr></tbody></table>' )
     
-    for (produit of produitLocalStorage) {
+    for (produit of product_id) {
         
         
         document.querySelector('tbody').innerHTML+=(
@@ -45,20 +45,12 @@ const form =`
         <input id="adresse" name="user_adresse" placeholder="Adresse" autocomplete="address-line1" >
     </div>
     <div>
-        <label for="cp">Code postal</label>
-        <input type="text" id="cp" name="user_cp" placeholder="Code postal" autocomplete="postal-code" pattern="[0-9][0-9][0-9][0-9][0-9]">
-    </div>
-    <div>
         <label for="city">Ville</label>
         <input type="text" id="city" name="user_city" placeholder="Ville" autocomplete="address-level2">
     </div>
     <div>
         <label for="email">Email</label>
         <input type="email" name="email" id="email" placeholder="Email" autocomplete="email">
-    </div>
-    <div>
-        <label for="comment">Commentaires</label>
-        <input type="text" id="comment" name="user_comment">
     </div>
     <div>
         <input type="submit" id="submit" name="envoyer">
@@ -77,20 +69,30 @@ btnEnv.addEventListener('click', (e) => {
     
 
     function valide() {
-        if (produitLocalStorage && document.getElementById("nom").value !="" && document.getElementById("prenom").value !="" && document.getElementById("adresse").value !="" && document.getElementById("cp").value !="" && document.getElementById("city").value !="" &&document.getElementById("email").value !=""){
-            const formFull = {
-                nom: document.getElementById("nom").value,
-                prenom: document.getElementById("prenom").value,
-                adresse: document.getElementById("adresse").value,
-                cp: document.getElementById("cp").value,
+        if (product_id && document.getElementById("nom").value !="" && document.getElementById("prenom").value !="" && document.getElementById("adresse").value !="" && document.getElementById("city").value !="" &&document.getElementById("email").value !=""){
+            const contact = {
+                firstName: document.getElementById("prenom").value,
+                lastName: document.getElementById("nom").value,
+                address: document.getElementById("adresse").value,
                 city: document.getElementById("city").value,
                 email: document.getElementById("email").value,
-                comment: document.getElementById("comment").value
             }
-        
-            localStorage.setItem("form", JSON.stringify(formFull))
+            localStorage.setItem("contact", JSON.stringify(contact))
+            products=[]
+            for (prod of product_id) {
+                products.push(prod.id)
+            }
+            envServ={
+                contact : contact,
+                products : products
+            }
+            console.log(typeof envServ)
+            console.log(envServ)
+            postServ(envServ)
+
         }
-        else if(!produitLocalStorage){
+
+        else if(!product_id){
             alert('Pannier vide')
             
         }
@@ -101,22 +103,38 @@ btnEnv.addEventListener('click', (e) => {
     valide()
 
 
-    //creation de l'array pour les information client
-    const formFull = {
-        nom: document.getElementById("nom").value,
-        prenom: document.getElementById("prenom").value,
-        adresse: document.getElementById("adresse").value,
-        cp: document.getElementById("cp").value,
-        city: document.getElementById("city").value,
-        email: document.getElementById("email").value,
-        comment: document.getElementById("comment").value
-    }
+    //envoie au serveur
+    //mettre tout les info dans une variable
 
-    localStorage.setItem("form", JSON.stringify(formFull))
-
-    const envoieServ={
-        produitLocalStorage,
-        formFull
-    }
 })
+
+//fonction d'envoie des donnnée au serveur
+async function postServ(envServ) {
+    const test = JSON.stringify(envServ)
+    console.log(test)
+    try{
+        let response = await fetch ("http://localhost:3000/api/cameras/order", {
+            method: "POST",
+            headers: {
+                    "Content-Type" : "application/json",
+                },
+            body: test,
+        });
+        if (response.ok) {
+            console.log("test2")
+            let responseServ = await response.json()
+            localStorage.setItem("commandeConfirm", responseServ.orderId)
+            window.location.href ="confirme.html"
+        }
+
+        else {
+            console.error('Retour du serveur : ', response.status);
+        }
+    }
+    catch (e) {
+        console.log(e)
+    }
+}
+
+
 

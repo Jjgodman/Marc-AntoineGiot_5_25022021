@@ -64,15 +64,15 @@ function displayInfo(info) {
         }
         //--------------------------------------stockage des données dans le local storage--------------------------------------------          
 
-        let produitLocalStorage =JSON.parse( localStorage.getItem("produit"));
+        let produitLocalStorage =JSON.parse( localStorage.getItem("product_id"));
         if(produitLocalStorage) {
             produitLocalStorage.push(infoCommande);
-            localStorage.setItem("produit", JSON.stringify(produitLocalStorage));
+            localStorage.setItem("product_id", JSON.stringify(produitLocalStorage));
         }
         else {
             produitLocalStorage = [];
             produitLocalStorage.push(infoCommande);
-            localStorage.setItem("produit", JSON.stringify(produitLocalStorage));
+            localStorage.setItem("product_id", JSON.stringify(produitLocalStorage));
         }
     });
 }
