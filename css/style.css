@@ -230,7 +230,7 @@ main .produit_acceuil img:hover {
   border: solid 2px black;
   width: 375px;
   height: 400px;
-  margin: 75px auto;
+  margin: 75px auto 160px auto;
 }
 .page_panier form div {
   position: relative;

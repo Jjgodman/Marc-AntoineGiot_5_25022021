@@ -20,6 +20,10 @@ function getInfoIndex() {
 //affichage des produit
 function displayInfoIndex (info) {
     for (produit of info) {
-        document.getElementById('produit_acceuil').innerHTML += ('<a href="./html/produits/'+produit._id+'.html"><img src="'+produit.imageUrl+'" alt="camera"><span>'+produit.name+'</span></a>')
+        document.getElementById('produit_acceuil').innerHTML += (`
+        <a href="./html/produits/`+produit._id+`.html">
+            <img src="`+produit.imageUrl+`" alt="camera">
+            <span>`+produit.name+`</span>
+        </a>`)
     }
 }

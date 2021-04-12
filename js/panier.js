@@ -6,20 +6,40 @@ const tab = document.getElementById("tabPanier")
 if (product_id){
 
     let prixT = 0;
-    tab.innerHTML = (`<table><tbody><tr><td class="ligne_1">Produit</td><td class="ligne_1">Nom</td><td class="ligne_1">Optique</td><td class="ligne_1">Prix</td></tr></tbody></table>`)
+    tab.innerHTML = (`
+    <table>
+        <tbody>
+            <tr>
+                <td class="ligne_1">Produit</td>
+                <td class="ligne_1">Nom</td>
+                <td class="ligne_1">Optique</td>
+                <td class="ligne_1">Prix</td>
+            </tr>
+        </tbody>
+    </table>`)
     
     for (produit of product_id) {
         
         
         document.querySelector('tbody').innerHTML+=(
 
-            '<tr><td class="ligne_2" style="display: none;">'+produit.id+'</td><td class="ligne_2"><img src="'+produit.image+'" alt="camera" class="reducImg"></td><td class="ligne_2">'+produit.nom+'</td><td class="ligne_2">'+produit.choixLense+'</td><td class="ligne_2">'+produit.prixPanier.toFixed(2)+' €</td></tr>'
+            `<tr>
+                <td class="ligne_2" style="display: none;">`+produit.id+`</td>
+                <td class="ligne_2"><img src="`+produit.image+`" alt="camera" class="reducImg"></td>
+                <td class="ligne_2">`+produit.nom+`</td>
+                <td class="ligne_2">`+produit.choixLense+`</td>
+                <td class="ligne_2">`+produit.prixPanier.toFixed(2)+` €</td>
+            </tr>`
         )
         prixT += produit.prixPanier
         localStorage.setItem("price", JSON.stringify(prixT))
     }
 
-    document.querySelector('tbody').innerHTML += ('<tr><td class="ligne_3" colspan="3">Total</td><td class="ligne_3">'+prixT.toFixed(2)+' €</td>')
+    document.querySelector('tbody').innerHTML += (`
+    <tr>
+        <td class="ligne_3" colspan="3">Total</td>
+        <td class="ligne_3">`+prixT.toFixed(2)+` €</td>
+    </tr>`)
 }
 //sinon on ecrit que le panier est vide
 else {
@@ -70,7 +90,12 @@ btnEnv.addEventListener('click', (e) => {
     
     //verifiquation que tout les element du formulaire sont bien au bon format
     function valide() {
-        if (product_id && document.getElementById("nom").value !="" && document.getElementById("prenom").value !="" && document.getElementById("adresse").value !="" && document.getElementById("city").value !="" &&document.getElementById("email").value !=""){
+        if (product_id 
+            && /^[A-Za-z]{3,25}$/.test(document.getElementById("nom").value) 
+            && /^[A-Za-z]{3,25}$/.test(document.getElementById("prenom").value) 
+            && /^([0-9]*) ?([a-zA-Z,\. ]*)$/.test(document.getElementById("adresse").value) 
+            && /^[A-Za-z]{3,25}$/.test(document.getElementById("city").value) 
+            && /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(document.getElementById("email").value)){
             const contact = {
                 firstName: document.getElementById("prenom").value,
                 lastName: document.getElementById("nom").value,
@@ -99,7 +124,7 @@ btnEnv.addEventListener('click', (e) => {
             
         }
         else{
-            alert("Saisissez toute les information")
+            alert("Saisissez de bonne information de contact")
         }
     }
     valide()

@@ -5,7 +5,6 @@ main()
 async function main() {
     const info = await getInfo()
     
-    console.log(info[1].lenses)
     displayInfo(info)
 }
 //récuperation des données de l'api
@@ -36,9 +35,15 @@ function displayInfo(info) {
     prixFinal=prix.substring(0,len-2)+','+prix.substring(len-2,len);
     //affichage des données sur la page
     let article = document.getElementById("article")
-    article.innerHTML = '<img src='+info.find(x => x._id === urlid).imageUrl+' alt="camera"><div class="describe"><h1 class="text_describe">'+info.find(x => x._id === urlid).name+'</h1><h2 class="text_describe">'+info.find(x => x._id === urlid).description+'</h2><select class="text_describe" id ="model"></select><p class="text_describe price">Prix : '+prixFinal+'€</p><input id="button" type="button" value="Ajouter au panier"></div>';
-    console.log(info)
-    console.log(info.find(x => x._id === urlid).name)
+    article.innerHTML = `
+    <img src=`+info.find(x => x._id === urlid).imageUrl+` alt="camera">
+    <div class="describe">
+        <h1 class="text_describe">`+info.find(x => x._id === urlid).name+`</h1>
+        <h2 class="text_describe">`+info.find(x => x._id === urlid).description+`</h2>
+        <select class="text_describe" id ="model"></select>
+        <p class="text_describe price">Prix : `+prixFinal+`€</p>
+        <input id="button" type="button" value="Ajouter au panier">
+    </div>`;
     //gestion à part de l'affichage des options d'achats pour faciliter l'utilisation de la boucle for
     for (lense of lenses) {
         const model = document.getElementById("model");
