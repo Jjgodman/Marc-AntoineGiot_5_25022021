@@ -6,7 +6,7 @@ const tab = document.getElementById("tabPanier")
 if (product_id){
 
     let prixT = 0;
-    tab.innerHTML = ('<table><tbody><tr><td class="ligne_1">Produit</td><td class="ligne_1">Nom</td><td class="ligne_1">Optique</td><td class="ligne_1">Prix</td></tr></tbody></table>' )
+    tab.innerHTML = (`<table><tbody><tr><td class="ligne_1">Produit</td><td class="ligne_1">Nom</td><td class="ligne_1">Optique</td><td class="ligne_1">Prix</td></tr></tbody></table>`)
     
     for (produit of product_id) {
         
@@ -16,8 +16,9 @@ if (product_id){
             '<tr><td class="ligne_2" style="display: none;">'+produit.id+'</td><td class="ligne_2"><img src="'+produit.image+'" alt="camera" class="reducImg"></td><td class="ligne_2">'+produit.nom+'</td><td class="ligne_2">'+produit.choixLense+'</td><td class="ligne_2">'+produit.prixPanier.toFixed(2)+' €</td></tr>'
         )
         prixT += produit.prixPanier
-        
+        localStorage.setItem("price", JSON.stringify(prixT))
     }
+
     document.querySelector('tbody').innerHTML += ('<tr><td class="ligne_3" colspan="3">Total</td><td class="ligne_3">'+prixT.toFixed(2)+' €</td>')
 }
 //sinon on ecrit que le panier est vide
@@ -67,7 +68,7 @@ const btnEnv = document.getElementById("submit")
 btnEnv.addEventListener('click', (e) => {
     e.preventDefault()
     
-
+    //verifiquation que tout les element du formulaire sont bien au bon format
     function valide() {
         if (product_id && document.getElementById("nom").value !="" && document.getElementById("prenom").value !="" && document.getElementById("adresse").value !="" && document.getElementById("city").value !="" &&document.getElementById("email").value !=""){
             const contact = {
@@ -77,17 +78,18 @@ btnEnv.addEventListener('click', (e) => {
                 city: document.getElementById("city").value,
                 email: document.getElementById("email").value,
             }
+            //envoi au local storage
             localStorage.setItem("contact", JSON.stringify(contact))
+            //mise en forme des donné pour l'envoi au serveur
             products=[]
             for (prod of product_id) {
                 products.push(prod.id)
             }
+            //objet envoyé au serveur
             envServ={
                 contact : contact,
                 products : products
             }
-            console.log(typeof envServ)
-            console.log(envServ)
             postServ(envServ)
 
         }
@@ -102,16 +104,12 @@ btnEnv.addEventListener('click', (e) => {
     }
     valide()
 
-
-    //envoie au serveur
-    //mettre tout les info dans une variable
-
 })
 
 //fonction d'envoie des donnnée au serveur
 async function postServ(envServ) {
     const test = JSON.stringify(envServ)
-    console.log(test)
+    //envoi des donné au serveur
     try{
         let response = await fetch ("http://localhost:3000/api/cameras/order", {
             method: "POST",
@@ -120,13 +118,13 @@ async function postServ(envServ) {
                 },
             body: test,
         });
+        //si c'est bon cela renvoie vers la page formulaire
         if (response.ok) {
-            console.log("test2")
             let responseServ = await response.json()
             localStorage.setItem("commandeConfirm", responseServ.orderId)
             window.location.href ="confirme.html"
         }
-
+        //sinon cela marque leretour serveur
         else {
             console.error('Retour du serveur : ', response.status);
         }

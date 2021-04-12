@@ -256,6 +256,31 @@ main .produit_acceuil img:hover {
   margin-top: 50px;
 }
 
+.page_confirme {
+  margin-top: 200px;
+  margin-bottom: 200px;
+  display: flex;
+  flex-direction: column;
+}
+.page_confirme h1 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+}
+.page_confirme p {
+  text-align: center;
+  max-width: 400px;
+  line-height: 30px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+}
+
 @media (max-width: 1700px) {
   .produit_acceuil {
     flex-wrap: wrap;
@@ -341,7 +366,7 @@ main .produit_acceuil img:hover {
   }
   .page_panier form {
     width: 90%;
-    height: 850px;
+    height: 650px;
   }
   .page_panier form div {
     position: initial;
