@@ -91,10 +91,10 @@ btnEnv.addEventListener('click', (e) => {
     //verifiquation que tout les element du formulaire sont bien au bon format
     function valide() {
         if (product_id 
-            && /^[A-Za-z]{3,25}$/.test(document.getElementById("nom").value) 
-            && /^[A-Za-z]{3,25}$/.test(document.getElementById("prenom").value) 
+            && /^[A-Za-z-]{3,25}$/.test(document.getElementById("nom").value) 
+            && /^[A-Za-z-]{3,25}$/.test(document.getElementById("prenom").value) 
             && /^([0-9]*) ?([a-zA-Z,\. ]*)$/.test(document.getElementById("adresse").value) 
-            && /^[A-Za-z]{3,25}$/.test(document.getElementById("city").value) 
+            && /^[A-Za-z-]{3,25}$/.test(document.getElementById("city").value) 
             && /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(document.getElementById("email").value)){
             const contact = {
                 firstName: document.getElementById("prenom").value,
