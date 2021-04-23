@@ -121,13 +121,46 @@ function envoi (product_id) {
         postServ(envServ)
 }
 
+
+/*&& /^[A-Za-z-]{3,25}$/.test(document.getElementById("prenom").value) 
+&& /^([0-9]*) ?([a-zA-Z,\. ]*)$/.test(document.getElementById("adresse").value) 
+&& /^[A-Za-z-]{3,25}$/.test(document.getElementById("city").value) 
+&& /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(document.getElementById("email").value))  */
+
+
 function valideForm(product_id) {
-    if (product_id 
-        && /^[A-Za-z-]{3,25}$/.test(document.getElementById("nom").value) 
-        && /^[A-Za-z-]{3,25}$/.test(document.getElementById("prenom").value) 
-        && /^([0-9]*) ?([a-zA-Z,\. ]*)$/.test(document.getElementById("adresse").value) 
-        && /^[A-Za-z-]{3,25}$/.test(document.getElementById("city").value) 
-        && /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(document.getElementById("email").value)){
+    const validreg = true
+    if (!/^[A-Za-z-]{3,25}$/.test(document.getElementById("nom").value) ) {
+        alert("veuillez entrer un nom de famille correct")
+        validreg = false
+        return validreg
+    }
+
+    if (!/^[A-Za-z-]{3,25}$/.test(document.getElementById("prenom").value)  ) {
+        alert("veuillez entrer un prenom correct")
+        validreg = false
+        return validreg
+    }
+
+    if (!/^([0-9]*) ?([a-zA-Z,\. ]*)$/.test(document.getElementById("adresse").value)  ) {
+        alert("veuillez entrer une adresse correct")
+        validreg = false
+        return validreg
+    }
+
+    if (!/^[A-Za-z-]{3,25}$/.test(document.getElementById("city").value)  ) {
+        alert("veuillez entrer une ville correct")
+        validreg = false
+        return validreg
+    }
+
+    if (!/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(document.getElementById("email").value) ) {
+        alert("veuillez entrer une adresse mail correct")
+        validreg = false
+        return validreg
+    }
+
+    if (product_id && validreg) {
         const contact = {
             firstName: document.getElementById("prenom").value,
             lastName: document.getElementById("nom").value,
@@ -156,10 +189,7 @@ function valideForm(product_id) {
         return false
         
     }
-    else{
-        alert("Saisissez de bonne information de contact")
-        return false
-    }
+    
 }
 
 //fonction d'envoie des donnnée au serveur

@@ -84,6 +84,7 @@ async function eventListener (info) {
             prixPanier: parseFloat(price(info).toString().replace(',' , '.'))
         }
         envoiDonnees(infoCommande)
+        alert('Produit ajouté au panier')
     })
 }
 
